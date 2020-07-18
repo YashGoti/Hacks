@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#@_YashGoti_
 import sys, requests, jsbeautifier
 
 def beautifyjs(content):
