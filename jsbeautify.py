@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 #@_YashGoti_
+
 import sys, requests, jsbeautifier
 
 def beautifyjs(content):
@@ -15,14 +16,11 @@ def getjsresponse(url):
         pass
 
 if __name__ == "__main__":
-    try:
-        if sys.argv[1]:
-            response = getjsresponse(sys.argv[1])
-            if response.status_code == 200:
-                print(beautifyjs(response.text))
-            else:
-                pass
+    if sys.argv[1]:
+        response = getjsresponse(sys.argv[1])
+        if response.status_code == 200:
+            print(beautifyjs(response.text))
         else:
-            print("~/jsbeautify.py {} https://jsurl.js".format(sys.argv[0]))
-    except:
-        pass
+            pass
+    else:
+        print("~/jsbeautify.py {} https://jsurl.js".format(sys.argv[0]))
