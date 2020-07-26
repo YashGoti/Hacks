@@ -9,6 +9,7 @@ banner(){
 	echo -e "\t / /_/ / /_/ / /_ \t"
 	echo -e "\t \__, /\__,_/___/ \t"
 	echo -e "\t/____/            \t"
+	echo -e "\t  By @_YashGoti_  \t"
 }
 
 help(){
