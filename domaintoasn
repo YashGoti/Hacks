@@ -1,0 +1,7 @@
+#!/bin/bash
+
+domain=$1
+org=$(echo $domain | cut -d '.' -f1)
+ip=$(host $domain | grep 'has address' | awk '{print $NF}')
+asn=$(curl -s "https://ipinfo.io/$ip/org" | awk '{print $1}')
+echo -e $asn | sort -u
