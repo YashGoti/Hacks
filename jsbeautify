@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-#@_YashGoti_
+#!/usr/bin/env python3
 
 import os, sys, requests, argparse, jsbeautifier
 
