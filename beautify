@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+##################################
+#          @_YashGoti_           #
+#--------------------------------#
+# Usage:                         #
+#       echo $URL | ./beautify   #
+#       ./beautify URL           #
+##################################
+
+import sys, requests, bs4, jsbeautifier
+
+def getresponse(url):
+	try: return requests.get("{}".format(url), timeout=5)
+	except: pass
+
+if not sys.stdin.isatty():
+	for stdin in  sys.stdin.readlines():
+		url = str(stdin.strip())
+		response = getresponse(url)
+		if response.ok:
+			if "text/html" in response.headers['Content-Type']:
+				print(bs4.BeautifulSoup(response.text, "html.parser").prettify())
+			elif "text/javascript" in response.headers['Content-Type']:
+				print(jsbeautifier.beautify(response.text))
+			else:
+				print(bs4.BeautifulSoup(response.text, "html.parser").prettify())
+		else:
+			pass
+else:
+	if sys.argv[1]:
+		url = str(sys.argv[1].strip())
+		response = getresponse(url)
+		if response.ok:
+			if "text/html" in response.headers['Content-Type']:
+				print(bs4.BeautifulSoup(response.text, "html.parser").prettify())
+			elif "text/javascript" in response.headers['Content-Type']:
+				print(jsbeautifier.beautify(response.text))
+			else:
+				print(bs4.BeautifulSoup(response.text, "html.parser").prettify())
+		else:
+			pass
+	else:
+		pass
