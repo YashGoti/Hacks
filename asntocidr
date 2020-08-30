@@ -1,0 +1,15 @@
+#!/bin/bash
+
+asn=$1
+
+if [[ $asn =~ , ]];then
+        for number in $(echo -e $asn | sed 's/\,/\n/g')
+        do
+                curl -s "https://ipinfo.io/AS$number" | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,3}' | sort -u
+        done
+else
+        curl -s "https://ipinfo.io/AS$asn" | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,3}' | sort -u
+fi
+
+#usage: ./asntocidr 8911,50313,394161
+#usage: ./asntocidr 8911
