@@ -1,5 +1,4 @@
 #!/bin/bash
-#@_YashGoti_
 
 if [[ -z $1 ]]; then
 	echo "./nmap.sh DOMAIN"
