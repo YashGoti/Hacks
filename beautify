@@ -6,7 +6,6 @@
 #       echo $URL | ./beautify   #
 #       ./beautify URL           #
 ##################################
-
 import sys, requests, bs4, jsbeautifier
 
 def getresponse(url):
@@ -16,6 +15,10 @@ def getresponse(url):
 if not sys.stdin.isatty():
 	for stdin in  sys.stdin.readlines():
 		url = str(stdin.strip())
+		if url.startswith("http://") or url.startswith("https://"):
+			url = url
+		else:
+			url = "https://{}".format(url)
 		response = getresponse(url)
 		if response.ok:
 			if "text/html" in response.headers['Content-Type']:
@@ -29,6 +32,10 @@ if not sys.stdin.isatty():
 else:
 	if sys.argv[1]:
 		url = str(sys.argv[1].strip())
+		if url.startswith("http://") or url.startswith("https://"):
+			url = url
+		else:
+			url = "https://{}".format(url)
 		response = getresponse(url)
 		if response.ok:
 			if "text/html" in response.headers['Content-Type']:
