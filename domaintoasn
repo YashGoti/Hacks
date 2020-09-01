@@ -4,3 +4,6 @@ domain=$1
 org=$(echo $domain | cut -d '.' -f1)
 ip=$(host $domain | grep 'has address' | awk '{print $NF}')
 curl -s "https://ipinfo.io/$ip/org" | awk '{print $1}' | sort -u
+
+#Usage
+#     ./domaintosn domain.com
