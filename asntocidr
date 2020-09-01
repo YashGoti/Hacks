@@ -1,7 +1,6 @@
 #!/bin/bash
 
 asn=$1
-
 if [[ $asn =~ , ]];then
         for number in $(echo -e $asn | sed 's/\,/\n/g')
         do
