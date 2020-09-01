@@ -7,3 +7,4 @@ curl -s "https://ipinfo.io/$ip/org" | awk '{print $1}' | sort -u
 
 #Usage
 #     ./domaintosn domain.com
+
